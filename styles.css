@@ -14,6 +14,18 @@ header {
   align-items: center;
 }
 
+header nav ul li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+header nav ul li a:hover {
+  color: #0073e6; /* Màu xanh sáng hơn khi hover */
+  text-decoration: underline; /* Gạch chân nhẹ */
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -60,17 +72,63 @@ nav ul li a {
   font-weight: bold;
 }
 
+.container-home {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
 .search-job {
-  text-align: center;
-  padding: 30px;
-  background: white;
-  margin: 20px;
+  width: 70%;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative; /* Để hỗ trợ ảnh nền phụ */
+  background-image: url("./images/15 copy.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Ảnh nền thứ hai */
+.search-job::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./images/a.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen; /* Áp dụng chế độ hoà trộn */
+  pointer-events: none;
+  z-index: -1; /* Ngăn layer ảnh ảnh hưởng đến nội dung */
+}
+
+.job-categories {
+  width: 30%;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.job-categories:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 .search-job input {
-  width: 60%;
+  width: 80%;
   padding: 10px;
   margin-right: 10px;
   border: 1px solid #ccc;
@@ -84,15 +142,6 @@ nav ul li a {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.job-categories {
-  text-align: center;
-  margin: 20px;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .job-categories ul {
@@ -111,10 +160,16 @@ nav ul li a {
   font-weight: bold;
 }
 
+.job-categories ul li a:hover {
+  text-decoration: underline;
+  color: #fb0808;
+}
+
 .features {
   display: flex;
   justify-content: space-around;
   padding: 30px;
+  padding-top: 0px;
 }
 
 .feature-box {
@@ -124,11 +179,19 @@ nav ul li a {
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 30%;
+  margin: 10px;
 }
 
 .feature-box img {
   width: 100%;
+  height: auto; /* Giữ tỉ lệ ảnh khi thay đổi kích thước */
+  max-height: 200px; /* Giới hạn chiều cao ảnh */
+  object-fit: cover; /* Cắt ảnh vừa với khung mà không bị méo */
   border-radius: 5px;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px); /* Di chuyển hộp chứa lên trên 10px khi hover */
 }
 
 footer {
@@ -137,4 +200,67 @@ footer {
   text-align: center;
   padding: 10px;
   margin-top: 20px;
+}
+
+/* Responsive design */
+
+.gallery {
+  width: 100%; /* Chiếm toàn bộ chiều rộng của search-job */
+  max-width: 500px; /* Giới hạn kích thước gallery */
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Căn giữa gallery bên trong */
+  align-items: center;
+  padding: 10px;
+  box-shadow: none; /* Xóa hiệu ứng bóng đổ */
+}
+
+@keyframes rotate {
+  from {
+    transform: perspective(1200px) rotateY(0deg); /* Bắt đầu với góc xoay 0 độ */
+  }
+  to {
+    transform: perspective(1200px) rotateY(360deg); /* Quay hoàn toàn 360 độ theo trục Y */
+  }
+}
+
+span {
+  position: absolute; /* Đặt vị trí tuyệt đối để phần tử span không ảnh hưởng đến layout */
+  width: 100%; /* Chiều rộng span bằng với gallery */
+  height: 100%; /* Chiều cao span bằng với gallery */
+  transform-origin: center; /* Đặt điểm gốc của phép biến đổi tại trung tâm */
+  transform-style: preserve-3d; /* Giữ hiệu ứng 3D bên trong phần tử */
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(380px); /* Xoay span theo trục Y và di chuyển nó ra trước theo trục Z */
+}
+
+.gallery img {
+  position: absolute; /* Đặt vị trí tuyệt đối để hình ảnh phủ toàn bộ span */
+  width: 100%; /* Chiều rộng ảnh chiếm toàn bộ không gian của span */
+  height: 100%; /* Chiều cao ảnh chiếm toàn bộ không gian của span */
+  object-fit: cover; /* Đảm bảo hình ảnh bao phủ hết span mà không bị méo */
+}
+
+.gallery {
+  position: relative; /* Đặt lại vị trí tương đối của gallery */
+  width: 200px; /* Chiều rộng của gallery */
+  height: 100px; /* Chiều cao của gallery */
+  border: 2px solid #fff; /* Thêm đường viền trắng cho gallery */
+  transition: 0.4 ease-in-out; /* Hiệu ứng chuyển tiếp mượt mà khi hover (chuột di qua) */
+  cursor: pointer; /* Thay đổi con trỏ chuột thành biểu tượng tay khi di chuột qua */
+  transform-style: preserve-3d; /* Giữ hiệu ứng 3D cho các phần tử con */
+  animation: rotate 35s linear infinite; /* Quay 360 độ liên tục */
+}
+
+.gallery img {
+  width: 100%; /* Chiều rộng ảnh phủ kín phần tử */
+  height: 100%; /* Chiều cao ảnh phủ kín phần tử */
+  transform: 0.4s ease-in-out; /* Thêm hiệu ứng chuyển đổi mượt mà cho thuộc tính transform */
+  border-radius: 15px; /* Bo tròn các góc ảnh */
+  box-shadow: 5px 5px 15px rgba(1, 1, 1, 1); /* Đổ bóng với kích thước 5px sang phải, 5px xuống dưới, bóng mờ 15px với màu đen đậm */
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà cho transform và box-shadow khi hover */
+}
+
+.gallery img:hover {
+  transform: scale(130%); /* Phóng to ảnh lên 130% khi hover */
 }

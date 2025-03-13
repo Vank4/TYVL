@@ -165,35 +165,6 @@ nav ul li a {
   color: #fb0808;
 }
 
-.features {
-  display: flex;
-  justify-content: space-around;
-  padding: 30px;
-  padding-top: 0px;
-}
-
-.feature-box {
-  text-align: center;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  margin: 10px;
-}
-
-.feature-box img {
-  width: 100%;
-  height: auto; /* Giữ tỉ lệ ảnh khi thay đổi kích thước */
-  max-height: 200px; /* Giới hạn chiều cao ảnh */
-  object-fit: cover; /* Cắt ảnh vừa với khung mà không bị méo */
-  border-radius: 5px;
-}
-
-.feature-box:hover {
-  transform: translateY(-10px); /* Di chuyển hộp chứa lên trên 10px khi hover */
-}
-
 footer {
   background: #333;
   color: white;
@@ -201,7 +172,6 @@ footer {
   padding: 10px;
   margin-top: 20px;
 }
-
 /* Responsive design */
 
 .gallery {
@@ -263,4 +233,221 @@ span {
 
 .gallery img:hover {
   transform: scale(130%); /* Phóng to ảnh lên 130% khi hover */
+}
+
+/* Categories Section */
+
+.container-categories {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.categories {
+  border-radius: 20px;
+  background: linear-gradient(to right, #ffffff, #0c79ee);
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h2 {
+  padding-left: 40px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.view-all {
+  color: #0073e6;
+  font-weight: 600;
+  transition: color 0.3s ease-in-out;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+  color: #005bb5;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 0px 2rem 20px;
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: 5px solid #4cb7ff;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.category-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: #0073e6;
+  font-size: 1.5rem;
+}
+
+.category-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.category-card p {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+/* Featured Jobs */
+.container-Featured {
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.featured-jobs {
+  background: linear-gradient(to right, #ffffff, #0c79ee);
+  border-radius: 20px;
+}
+
+.section-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: 50px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột */
+  gap: 20px; /* Tạo khoảng cách giữa các card */
+  padding: 20px;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column; /* Xếp nội dung theo chiều dọc */
+  justify-content: space-between; /* Căn đều khoảng cách giữa các phần */
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.featured-header {
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  gap: 10px; /* Tạo khoảng cách giữa ảnh và nội dung */
+}
+
+.featured-header img {
+  width: 60px; /* Điều chỉnh kích thước ảnh */
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.featured-header div {
+  flex-direction: column; /* Xếp nội dung theo chiều dọc */
+  justify-content: center; /* Căn giữa nội dung theo chiều dọc */
+}
+
+.job-details {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+  justify-content: space-between; /* Giãn đều các cột */
+  gap: 10px; /* Khoảng cách giữa các cột */
+}
+
+.job-detail {
+  width: calc(50% - 5px); /* Mỗi cột chiếm 50% trừ đi khoảng cách */
+}
+.job-detail {
+  display: flex; /* Xếp các phần tử trên 1 dòng */
+  align-items: center; /* Căn giữa icon và nội dung */
+  gap: 8px; /* Khoảng cách giữa icon và chữ */
+  padding-bottom: 10px; /* Tạo khoảng cách dưới */
+}
+
+.job-tags {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Chia thành 3 cột */
+  gap: 8px; /* Khoảng cách giữa các tag */
+  margin-bottom: 15px; /* Tạo khoảng cách giữa job-tags và job-actions */
+  width: 100%; /* Đảm bảo full width */
+}
+
+.tag {
+  background: #f0f0f0;
+  padding: 6px 10px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.job-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột bằng nhau */
+  gap: 10px; /* Khoảng cách giữa các nút */
+  text-align: center;
+}
+
+.job-actions .btn:first-child {
+  background-color: #0073e6; /* Màu xanh */
+  color: white;
+  border: none;
+}
+
+.job-actions .btn:not(:first-child) {
+  background-color: white; /* Màu mặc định */
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.job-actions .btn:first-child:hover {
+  background-color: #eeff00; /* Màu xanh */
+  color: rgb(0, 0, 0);
+  border: none;
+}
+
+.job-actions .btn:not(:first-child):hover {
+  background-color: rgb(30, 255, 0); /* Màu mặc định */
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.featured-card:hover {
+  animation: pulsing 2s infinite;
+}
+@keyframes pulsing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

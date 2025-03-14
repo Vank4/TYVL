@@ -12,13 +12,15 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
     <script defer src="./js/script.js"></script>
   </head>
   <body>
     <div id="header"></div>
     <!-- Import Header -->
     <main>
-      <section class="login-register">
+      <!-- <section class="login-register">
+
         <h2>ĐĂNG KÝ & ĐĂNG NHẬP</h2>
         <form id="loginForm">
           <input
@@ -36,9 +38,89 @@
           <button type="submit">Đăng nhập</button>
         </form>
         <p>Chưa có tài khoản? <a href="dangky.html">Đăng ký</a></p>
-      </section>
-      <!-- Add more content specific to login and registration here -->
+      </section> -->
+      <div class="container" id="container">
+        <div class="form-container register-container">
+          <form action="#">
+            <h1>Register hire</h1>
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Register</button>
+            <span>or use your account</span>
+            <div class="social-container">
+              <a href="#" class="social"
+                ><i class="lni lni-facebook-fill"></i
+              ></a>
+              <a href="#" class="social"><i class="lni lni-google"></i></a>
+              <a href="#" class="social"
+                ><i class="lni lni-linkedin-original"></i
+              ></a>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-container login-container">
+          <form action="#">
+            <h1>Login hire</h1>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <div class="content">
+              <div class="checkbox">
+                <input type="checkbox" name="checkbox" id="checkbox" />
+                <label>Remember me</label>
+              </div>
+              <div class="pass-link">
+                <a href="#">Forgot password</a>
+              </div>
+            </div>
+            <button>login</button>
+            <span>or use your account</span>
+            <div class="social-container">
+              <a href="#" class="social"
+                ><i class="lni lni-facebook-fill"></i
+              ></a>
+              <a href="#" class="social"><i class="lni lni-google"></i></a>
+              <a href="#" class="social"
+                ><i class="lni lni-linkedin-original"></i
+              ></a>
+            </div>
+          </form>
+        </div>
+
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1 class="title">
+                Hello <br />
+                friends
+              </h1>
+              <p>if your have an account, login here and have fun</p>
+              <button class="ghost" id="login">
+                Login
+                <i class="lni lni-arrow-left login"></i>
+              </button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1 class="title">
+                Start yout <br />
+                friends
+              </h1>
+              <p>
+                if you don't have an account yet, join us and start your
+                journey.
+              </p>
+              <button class="ghost" id="register">
+                Register
+                <i class="lni lni-arrow-right register"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <div id="footer"></div>
+
+    <script src="./js/login.js"></script>
   </body>
 </html>

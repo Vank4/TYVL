@@ -1,0 +1,370 @@
+.container-home {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.search-job {
+  width: 70%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative; /* Để hỗ trợ ảnh nền phụ */
+  background-image: url("../images/15\ copy.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Ảnh nền thứ hai */
+.search-job::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/a.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen; /* Áp dụng chế độ hoà trộn */
+  pointer-events: none;
+  z-index: -1; /* Ngăn layer ảnh ảnh hưởng đến nội dung */
+}
+
+.job-categories {
+  width: 30%;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.job-categories:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-job input {
+  width: 80%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-job button {
+  padding: 10px 20px;
+  background: #0073e6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.job-categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.job-categories ul li {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.job-categories ul li a {
+  text-decoration: none;
+  color: #0073e6;
+  font-weight: bold;
+}
+
+.job-categories ul li a:hover {
+  text-decoration: underline;
+  color: #fb0808;
+}
+/* Responsive design */
+
+.gallery {
+  width: 100%; /* Chiếm toàn bộ chiều rộng của search-job */
+  max-width: 500px; /* Giới hạn kích thước gallery */
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Căn giữa gallery bên trong */
+  align-items: center;
+  padding: 10px;
+  box-shadow: none; /* Xóa hiệu ứng bóng đổ */
+}
+
+@keyframes rotate {
+  from {
+    transform: perspective(1200px) rotateY(0deg); /* Bắt đầu với góc xoay 0 độ */
+  }
+  to {
+    transform: perspective(1200px) rotateY(360deg); /* Quay hoàn toàn 360 độ theo trục Y */
+  }
+}
+
+span {
+  position: absolute; /* Đặt vị trí tuyệt đối để phần tử span không ảnh hưởng đến layout */
+  width: 100%; /* Chiều rộng span bằng với gallery */
+  height: 100%; /* Chiều cao span bằng với gallery */
+  transform-origin: center; /* Đặt điểm gốc của phép biến đổi tại trung tâm */
+  transform-style: preserve-3d; /* Giữ hiệu ứng 3D bên trong phần tử */
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(380px); /* Xoay span theo trục Y và di chuyển nó ra trước theo trục Z */
+}
+
+.gallery img {
+  position: absolute; /* Đặt vị trí tuyệt đối để hình ảnh phủ toàn bộ span */
+  width: 100%; /* Chiều rộng ảnh chiếm toàn bộ không gian của span */
+  height: 100%; /* Chiều cao ảnh chiếm toàn bộ không gian của span */
+  object-fit: cover; /* Đảm bảo hình ảnh bao phủ hết span mà không bị méo */
+}
+
+.gallery {
+  position: relative; /* Đặt lại vị trí tương đối của gallery */
+  width: 200px; /* Chiều rộng của gallery */
+  height: 100px; /* Chiều cao của gallery */
+  border: 2px solid #fff; /* Thêm đường viền trắng cho gallery */
+  transition: 0.4 ease-in-out; /* Hiệu ứng chuyển tiếp mượt mà khi hover (chuột di qua) */
+  cursor: pointer; /* Thay đổi con trỏ chuột thành biểu tượng tay khi di chuột qua */
+  transform-style: preserve-3d; /* Giữ hiệu ứng 3D cho các phần tử con */
+  animation: rotate 35s linear infinite; /* Quay 360 độ liên tục */
+}
+
+.gallery img {
+  width: 100%; /* Chiều rộng ảnh phủ kín phần tử */
+  height: 100%; /* Chiều cao ảnh phủ kín phần tử */
+  transform: 0.4s ease-in-out; /* Thêm hiệu ứng chuyển đổi mượt mà cho thuộc tính transform */
+  border-radius: 15px; /* Bo tròn các góc ảnh */
+  box-shadow: 5px 5px 15px rgba(1, 1, 1, 1); /* Đổ bóng với kích thước 5px sang phải, 5px xuống dưới, bóng mờ 15px với màu đen đậm */
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà cho transform và box-shadow khi hover */
+}
+
+.gallery img:hover {
+  transform: scale(130%); /* Phóng to ảnh lên 130% khi hover */
+}
+
+/* Categories Section */
+
+.container-categories {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.categories {
+  border-radius: 20px;
+  background: linear-gradient(to right, #ffffff, #0c79ee);
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.view-all {
+  color: #0073e6;
+  font-weight: 600;
+  transition: color 0.3s ease-in-out;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+  color: #005bb5;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 0px 2rem 20px;
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: 5px solid #4cb7ff;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.category-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: #0073e6;
+  font-size: 1.5rem;
+}
+
+.category-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.category-card p {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+/* Featured Jobs */
+.container-Featured {
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.featured-jobs {
+  background: linear-gradient(to right, #ffffff, #0c79ee);
+  border-radius: 20px;
+}
+
+.section-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: 50px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột */
+  gap: 20px; /* Tạo khoảng cách giữa các card */
+  padding: 20px;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column; /* Xếp nội dung theo chiều dọc */
+  justify-content: space-between; /* Căn đều khoảng cách giữa các phần */
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.featured-header {
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  gap: 10px; /* Tạo khoảng cách giữa ảnh và nội dung */
+}
+
+.featured-header img {
+  width: 100px; /* Điều chỉnh kích thước ảnh */
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.featured-header div {
+  flex-direction: column; /* Xếp nội dung theo chiều dọc */
+  justify-content: center; /* Căn giữa nội dung theo chiều dọc */
+}
+
+.job-details {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+  justify-content: space-between; /* Giãn đều các cột */
+  gap: 10px; /* Khoảng cách giữa các cột */
+}
+
+.job-detail {
+  width: calc(50% - 5px); /* Mỗi cột chiếm 50% trừ đi khoảng cách */
+}
+.job-detail {
+  display: flex; /* Xếp các phần tử trên 1 dòng */
+  align-items: center; /* Căn giữa icon và nội dung */
+  gap: 8px; /* Khoảng cách giữa icon và chữ */
+  padding-bottom: 10px; /* Tạo khoảng cách dưới */
+}
+
+.job-tags {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Chia thành 3 cột */
+  gap: 8px; /* Khoảng cách giữa các tag */
+  margin-bottom: 15px; /* Tạo khoảng cách giữa job-tags và job-actions */
+  width: 100%; /* Đảm bảo full width */
+}
+
+.tag {
+  background: #f0f0f0;
+  padding: 4px 6px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.job-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột bằng nhau */
+  gap: 10px; /* Khoảng cách giữa các nút */
+  text-align: center;
+}
+
+.job-actions .btn:first-child {
+  background-color: #0073e6; /* Màu xanh */
+  color: white;
+  border: none;
+}
+
+.job-actions .btn:not(:first-child) {
+  background-color: white; /* Màu mặc định */
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.job-actions .btn:first-child:hover {
+  background-color: #eeff00; /* Màu xanh */
+  color: rgb(0, 0, 0);
+  border: none;
+}
+
+.job-actions .btn:not(:first-child):hover {
+  background-color: rgb(30, 255, 0); /* Màu mặc định */
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.featured-card:hover {
+  animation: pulsing 2s infinite;
+}
+@keyframes pulsing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
